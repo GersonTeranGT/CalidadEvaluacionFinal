@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ contact.name }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid text-center">
+    <h1>{{ contact.name }}</h1>
+
+    <div class="row justify-content-evenly">
+        <div class="col-6 text-start badge text-bg-primary">
+            <p><strong>Correo:</strong> {{ contact.email }}</p>
+            <p><strong>Teléfono:</strong> {{ contact.phone }}</p>
+            <p><strong>Ciudad:</strong> {{ contact.city }}</p>
+
+            <div class="mt-4">
+                <a class="btn btn-success" href="{% url 'contact_update' contact.id %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'contact_delete' contact.id %}">Eliminar</a>
+                <a class="btn btn-secondary" href="{% url 'contact_list' %}">Regresar a la lista</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

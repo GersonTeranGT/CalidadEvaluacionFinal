@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load bootstrap5 %}
+
+{% block title %}
+    {% if form.instance.pk %}Editar Contacto{% else %}Crear Contacto{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid text-center">
+    <h1>
+        {% if form.instance.pk %}
+            Editar Contacto: {{ form.instance.name }}
+        {% else %}
+            Crear Contacto
+        {% endif %}
+    </h1>
+
+    <form method="POST" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a class="btn btn-danger" href="{% url 'contact_list' %}">Cancelar</a>
+        {% endbuttons %}
+    </form>
+</div>
+{% endblock %}
